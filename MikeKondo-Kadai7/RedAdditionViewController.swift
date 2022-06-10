@@ -12,23 +12,20 @@ class RedAdditionViewController: UIViewController {
     @IBOutlet private var number2TextField: UITextField!
     @IBOutlet private var calcResultLabel: UILabel!
 
-    // 計算結果はプロパティで管理
-    private var calcResultNumber: Int = 0
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTextField()
+        setupTextFields()
     }
 
     @IBAction private func didTapCalcButton(_ sender: Any) {
         let number1: Int = Int(number1TextField.text ?? "") ?? 0
         let number2: Int = Int(number2TextField.text ?? "") ?? 0
-        calcResultNumber = number1 + number2
+        let calcResultNumber = number1 + number2
         calcResultLabel.text = String(calcResultNumber)
         view.endEditing(true)
     }
 
-    private func setTextField() {
+    private func setupTextFields() {
         number1TextField.delegate = self
         number2TextField.delegate = self
         number1TextField.keyboardType = .numberPad
